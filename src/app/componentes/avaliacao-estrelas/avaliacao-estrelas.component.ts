@@ -11,18 +11,16 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => AvaliacaoEstrelasComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class AvaliacaoEstrelasComponent implements ControlValueAccessor {
-
   @Input() classificacao: number = 1;
   readOnly: boolean = true;
   estrelas: number[] = [1, 2, 3, 4, 5];
   onChange = (classificacao: number) => {};
   onTouched = () => {};
-
 
   writeValue(classificacao: number): void {
     if (this.isClassificationValid(classificacao)) {
@@ -44,7 +42,7 @@ export class AvaliacaoEstrelasComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState?(isDisabled: boolean): void {
+  setDisabledState(isDisabled: boolean): void {
     this.readOnly = isDisabled;
   }
 
